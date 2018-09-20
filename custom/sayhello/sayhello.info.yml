@@ -1,0 +1,6 @@
+name: Say Hello
+description: Say Hello with ajax
+package: Custom
+type: module
+core: 8.x
+

@@ -1,0 +1,19 @@
+mi_javascript.info:
+  title: Javascript de Carlos
+  description: Ejemple de uso de Javascript
+  route_name: mi_javascript.info
+  expanded: TRUE
+
+mi_javascript.accordion:
+  title: JQuery UI accordion
+  description: Uso de Jquery accordion de Drupal.
+  route_name: mi_javascript.accordion
+  parent: mi_javascript.info
+  weight: 1
+
+mi_javascript.myfirstjquery:
+  title: Mi primer jquery
+  description: Uso de Jquery fade de Drupal.
+  route_name: mi_javascript.myfirstjquery
+  parent: mi_javascript.info
+  weight: 100

@@ -1,0 +1,5 @@
+name: mi_javascript
+description: replica del ejemplo de implementación de javascript en drupal 8
+package: 'Custom'
+type: module
+core: '8.x'

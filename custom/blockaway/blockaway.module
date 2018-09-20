@@ -1,0 +1,13 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ */
+function blockaway_theme($existing, $type, $theme, $path) {
+  return [
+    'blockaway' => [
+      'template' => 'blockaway',
+      'variables' => NULL,
+    ],
+  ];
+}

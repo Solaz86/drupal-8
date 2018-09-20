@@ -1,0 +1,7 @@
+blockaway.namespace:
+  path: '/blockaway'
+  defaults:
+    _title: 'custom hide blocks'
+    _controller: '\Drupal\blockaway\Controller\BlockawayController::getBlockawayImplementation'
+  requirements:
+    _permission: 'access content'

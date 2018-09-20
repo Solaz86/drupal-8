@@ -1,0 +1,53 @@
+<?php
+
+use Drupal\Core\StringTranslation\TranslationInterface;
+/*
+ * @file
+ * Install, update and uninstall functions for the plusone example
+ */
+
+
+/**
+ * Implements hook_schema().
+ *
+ * Defines the database tables used by this module.
+ *
+ * @see hook_schema()
+ *
+ * @ingroup plusone
+ */
+function plusone_schema() {
+
+  $schema['plusone_votes'] = [
+    'description' => t('Stores votes from the plusone module.'),
+    'fields' => [
+      'uid' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => t('The {user}.uid of the user casting the vote.'),
+      ],
+      'nid' => [
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => t('The {node}.nid of the node being voted on.'),
+      ],
+      'vote_count' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => t('The number of votes cast.'),
+      ],
+    ],
+    'primary key' => ['uid', 'nid'],
+    'indexes' => [
+      'nid' => ['nid'],
+      'uid' => ['uid'],
+    ],
+  ];
+
+  return $schema;
+
+}

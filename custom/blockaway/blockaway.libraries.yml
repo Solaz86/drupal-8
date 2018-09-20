@@ -1,0 +1,5 @@
+blockaway.namespace:
+  js:
+    js/blockaway_namespace.js: {}
+  dependencies:
+      - core/jquery

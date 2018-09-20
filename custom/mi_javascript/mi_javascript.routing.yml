@@ -1,0 +1,23 @@
+mi_javascript.info:
+  path: '/javascript-test'
+  defaults:
+    _title: 'Ejemplo de Javascript'
+    _controller: '\Drupal\mi_javascript\Controller\MiJavascriptController::description'
+  requirements:
+    _permission: 'access content'
+
+mi_javascript.accordion:
+  path: '/javascript-test/accordion'
+  defaults:
+    _title: 'Efecto acordion de Drupal Jquery'
+    _controller: '\Drupal\mi_javascript\Controller\MiJavascriptController::getJsAccordionImplementation'
+  requirements:
+    _permission: 'access content'
+
+mi_javascript.myfirstjquery:
+  path: '/javascript-test/my-first-jquery'
+  defaults:
+    _title: 'Mi primer jquery'
+    _controller: '\Drupal\mi_javascript\Controller\MiJavascriptController::getMyFirstJqueryImplementation'
+  requirements:
+    _permission: 'access content'

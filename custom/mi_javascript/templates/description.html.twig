@@ -1,0 +1,27 @@
+{#
+
+Description text for the JavaScript Example.
+
+#}
+
+{% set js_accordion = path('mi_javascript.accordion') %}
+{% set js_myfirstjquery = path('mi_javascript.myfirstjquery') %}
+
+{% trans %}
+
+	<p>Drupal includes jQuery and jQuery UI.</p>
+
+
+	<ol>
+		<li>
+			<p><a href={{ js_accordion }}>An accordion-style section reveal effect</a>:
+				This demonstrates calling a jQuery UI function using Drupal rendering
+				system.
+		</li>
+		<li>
+			<p><a href={{ js_myfirstjquery }}> My first test JQuery test</a>:
+				bla bla bla.
+		</li>
+	</ol>
+
+{% endtrans %}

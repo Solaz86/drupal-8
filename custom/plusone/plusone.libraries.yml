@@ -1,0 +1,10 @@
+plusone.ajax:
+  version: 1.x
+  css:
+    base:
+      css/plusone.css: {}
+
+#  js:
+#    js/plusone_ajax.js: {}
+#  dependencies:
+#  - core/jquery

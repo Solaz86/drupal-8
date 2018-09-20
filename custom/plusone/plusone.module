@@ -1,0 +1,68 @@
+<?php
+
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\JsonResponse;
+
+function plusone_vote($nid) {
+
+  $user = \Drupal::currentUser();
+  $nid = (int)$nid;
+
+  // Check if current user is the autor
+
+  $database = \Drupal::database();
+  $query = $database->select('node', 'n');
+  $query->fields('n', ['nid', 'uid']);
+  $query->condition('nid', $nid);
+  $query->condition('uid', int($user->uid));
+  $is_author = $query->execute()->fetchAll();
+
+//  $is_author = db_query('SELECT uid from {node} where nid = :nid AND uid = :uid',
+//    array(
+//      ":nid" => (int)$nid,
+//      ":uid" => (int)$user->uid))
+//    ->fetchAll();
+
+  if ($nid > 0 && !$is_author) {
+    // get current vote
+    $vote_count = plusone_get_vote($nid, $user->uid); //@TODO
+    echo "Vote count is: $vote_count<br/>";
+    if (!$vote_count) {
+      echo "Yep was existing votes<br/>";
+      // Delete existing vote count for this user.
+      $database->delete('plusone_votes')
+        ->condition('uid', $user->uid)
+        ->condition('nid', $nid)
+        ->execute();
+
+      $database->insert('plusone_votes')
+        ->fields(array(
+          'uid' => $user->uid,
+          'nid' => $nid,
+          'vote_count' => $vote_count + 1,
+        ))
+        ->execute();
+    }
+  }
+  $total_votes = plusone_get_total($nid); //@TODO
+  // Check to see if jQuery made the call. The AJAX call used
+  // the POST method and passed in the key/value pair js = 1.
+  if (!empty($_POST['js'])) {
+    //jQuert made the call
+    // This will return results to jQuery's request
+    // For a given $entity object.
+    $array = [
+      'total_votes' => $total_votes,
+      'voted' =>t('You Voted')
+    ];
+    return new JsonResponse($array);
+  }
+  //It was a non-JavaScript call. Redisplay the entire page
+  // with the udated vote total by redirecting to node/$nid
+  // (or ant URL alias that has been set for node/$nid).
+
+  $path = 'node/'.$nid;
+  $result = \Drupal::service('path.alias_manager')->getAliasByPath($path);
+  return new RedirectResponse(\Drupal::url($result));
+
+}

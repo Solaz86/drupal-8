@@ -1,0 +1,6 @@
+plusone.ajax:
+  path: '/plusone/vote'
+#  defaults:
+#    _controller: '\Drupal\plusone\Controller\PlusoneController::implementPlusone'
+  requirements:
+    _permission: 'rate content'

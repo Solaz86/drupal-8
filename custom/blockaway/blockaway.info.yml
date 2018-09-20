@@ -1,0 +1,5 @@
+name: blockaway
+description: activa y descativa bloque con jQuery
+package: 'Custom'
+type: module
+core: '8.x'

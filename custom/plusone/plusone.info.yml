@@ -1,0 +1,5 @@
+name: Plus One
+description: Votos en tiempo real con Ajax
+package: 'Custom'
+core: '8.x'
+type: module
